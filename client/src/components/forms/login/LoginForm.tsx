@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Button, Form, Input, Row} from "antd";
-import {rules} from "../../../lib/utils/rules";
+import {rules} from "../../../helpers/utils/rules";
 import {useTypedSelector} from "../../../lib/hooks/useTypedSelector";
 import {IUser} from "../../../models/IUser";
 import {useActions} from "../../../lib/hooks/useActions";

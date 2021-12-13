@@ -2,6 +2,7 @@ import {AuthActionEnum, SetAuthAction, SetErrorAction, SetIsLoadingAction, SetUs
 import {IUser} from "../../../models/IUser";
 import {AppDispatch} from "../index";
 import axios from "axios";
+import UserService from "../../../api/UserService";
 
 
 export const AuthActionCreators = {
@@ -28,13 +29,13 @@ export const AuthActionCreators = {
     login: (userName: string, password: string) => async (dispatch: AppDispatch) => {
         try {
             dispatch(AuthActionCreators.setIsLoading(true))
-            const {data} = await axios.get('./users.json')
+            const {data} = await UserService.getUsers()
             const mockUser:IUser = data.find((user: IUser) => user.userName === userName && user.password === password)
             if(mockUser) {
                 localStorage.setItem('isAuth', 'true')
                 localStorage.setItem('userName', mockUser.userName)
-                dispatch(AuthActionCreators.setIsAuth(true))
                 dispatch(AuthActionCreators.setUser(mockUser))
+                dispatch(AuthActionCreators.setIsAuth(true))
             }else {
                 dispatch(AuthActionCreators.setError("Некорректные данные"))
             }

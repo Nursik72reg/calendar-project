@@ -6,8 +6,8 @@ const initialState: CalendarState = {
     events: []
 }
 
-export default function calendarReducer (state = initialState, action: CalendarAction) : CalendarState {
-        switch (action.payload){
+export default function calendarReducer (state = initialState, action: CalendarAction)  {
+        switch (action.type){
             case CalendarActionEnum.SET_GUESTS:
                 return {
                     ...state,
@@ -20,7 +20,7 @@ export default function calendarReducer (state = initialState, action: CalendarA
                 }
 
             default:
-                return this.state
+                return state
 
         }
 }

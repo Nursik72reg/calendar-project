@@ -1,10 +1,10 @@
 import {IUser} from "../../../models/IUser";
-import {ICalendar} from "../../../models/ICalendar";
+import {IEvent} from "../../../models/IEvent";
 import {AuthActionEnum, SetAuthAction, SetErrorAction, SetIsLoadingAction, SetUserAction} from "../auth/types";
 
 export interface CalendarState  {
     guests: IUser[],
-    events: ICalendar[]
+    events: IEvent[]
 }
 
 export enum CalendarActionEnum {
@@ -14,14 +14,14 @@ export enum CalendarActionEnum {
 
 
 export interface SetGuestsAction {
-    type:CalendarActionEnum.SET_GUESTS;
+    type: CalendarActionEnum.SET_GUESTS;
     payload: IUser[]
 }
 
 
 export interface SetEventsAction {
-    type:CalendarActionEnum.SET_EVENTS;
-    payload: ICalendar[]
+    type: CalendarActionEnum.SET_EVENTS;
+    payload: IEvent[]
 }
 
 export type CalendarAction =
